@@ -27,19 +27,19 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final Map<String, bool> score = {};
   final Map choises = {
-    '🍏': Colors.green,
-    '🍅': Colors.red,
-    '🍊': Colors.orange,
-    '🍆': Colors.purple,
-    '🥥': Colors.brown,
-    '🍌': Colors.yellow,
+    '🐶': "kutta",
+    '🐱': "billi",
+    '🐼': "panda",
+    '🐯': "tiger",
+    '🦁': "sherr",
+    '🐵': "monkey",
   };
   int seed = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CHANCES ${score.length}/6'),
+        title: Text('SCORE ${score.length}/6'),
         backgroundColor: Colors.lightGreen,
       ),
       floatingActionButton: FloatingActionButton(
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 data: emoji,
                 child: Emoji(emoji: score[emoji] == true ? "☑️" : emoji),
                 feedback: Emoji(emoji: emoji),
-                childWhenDragging: Emoji(emoji: "☑️"),
+                childWhenDragging: Emoji(emoji: "💣"),
               );
             }).toList(),
           ),
@@ -83,17 +83,27 @@ class _MyHomePageState extends State<MyHomePage> {
         if (score[emoji] == true) {
           return Container(
             color: Colors.white,
-            child: Text("CORRECT!!!"),
+            child: Text(
+              "CORRECT!!!",
+              style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
+            ),
             alignment: Alignment.center,
             height: 80,
             width: 200,
           );
         } else {
           return Container(
-            color: choises[emoji],
+            color: Colors.amberAccent,
             alignment: Alignment.center,
             height: 80,
             width: 200,
+            child: Text(
+              choises[emoji],
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic),
+            ),
           );
         }
       },
